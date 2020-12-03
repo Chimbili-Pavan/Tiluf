@@ -1,0 +1,256 @@
+QUERIES
+-----------------------------------------------------
+accounts(first: 5){     // to fetch all the first 5 accounts
+    id
+    username
+    name
+    pichash
+    descriptioncontacthash
+    role
+	contenthash
+    upgradedcontractAddress
+	addrs {
+	 id: ID!
+     username: String!
+     add: Bytes!
+	}
+  }
+  
+account(id:"chimbili"){      // to fetch the account whose id is chimbili
+    id
+    username
+    name
+    pichash
+    descriptioncontacthash
+    role
+    contenthash
+    upgradedcontractAddress
+	addrs {
+	 id: ID!
+     username: String!
+     add: Bytes!
+	}
+  }
+  
+accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose username is "pavan"
+    id
+    username
+    name
+    pichash
+    descriptioncontacthash
+    role
+    contenthash
+    upgradedcontractAddress
+	addrs {
+	 id: ID!
+     username: String!
+     add: Bytes!
+	}
+  }	
+  
+  
+  
+  statuses(first: 5) {    // to fetch first 5 ststuses
+    id
+    status
+    description
+  }
+  
+  roles(first: 5) {   // to fetch first 5 roles
+    id
+    role
+    description
+  }
+  
+  categories(first: 2){  // to fetch 5 categories
+    id
+    category
+    description
+  }
+  
+  curiotypes(first: 2){  // to fetch first 2 curiotypes
+    id
+    type
+    description
+  }
+  
+  curios(first: 5){   // to fetch all the first 5 products
+    id
+  	currentEmbracer
+  	curioid
+  	curioName
+  	category
+  	creatorName
+  	livehash
+  	curioType
+  	status
+  	price
+  	numberOfPassOn
+  	curiHsh {
+  	  id
+	  _3dhash
+	  _2dhash
+	  pichash1
+	  narrationHash
+  	}
+  	upgradedcontractAddress
+  	jrny{
+      id
+	  currentEmbracer
+	  blocknumber
+	  timestamp
+    }
+  }
+  
+  
+  curio(id:"s1"){     // to fetch the product whose id is "s1"
+    id
+  	currentEmbracer
+  	curioid
+  	curioName
+  	category
+  	creatorName
+  	livehash
+  	curioType
+  	status
+  	price
+  	numberOfPassOn
+  	curiHsh {
+  	  id
+	  _3dhash
+	  _2dhash
+	  pichash1
+	  narrationHash
+  	}
+  	upgradedcontractAddress
+  	jrny{
+      id
+	  currentEmbracer
+	  blocknumber
+	  timestamp
+    }
+  }
+  
+  curios(where : {productType:"basic"}){     // to fetch all the products whose producttype is "basic"
+    id
+  	currentEmbracer
+  	curioid
+  	curioName
+  	category
+  	creatorName
+  	livehash
+  	curioType
+  	status
+  	price
+  	numberOfPassOn
+  	curiHsh {
+  	  id
+	  _3dhash
+	  _2dhash
+	  pichash1
+	  narrationHash
+  	}
+  	upgradedcontractAddress
+  	jrny{
+      id
+	  currentEmbracer
+	  blocknumber
+	  timestamp
+    }
+  }
+  
+  userproducts(first :5){
+	id
+	username
+	products
+  }
+  
+  usernametoaddress(first:5){
+	id
+	username
+	add
+  }
+  
+  addresstousernames(first:5){
+	id
+	add
+	usernames
+  }
+  
+  livhashes(first:5){  // to fetch first 5 live hashes of different curio's
+	id
+	curioid
+	Hash {
+	 id
+	 hashcontent
+	 username
+	 time
+	}
+  }
+  
+   livhash(id:"S1"){  // to fetch live hashes of the curio of id=S1
+	id
+	curioid
+	Hash {
+	 id
+	 hashcontent
+	 username
+	 time
+	}
+  }
+  
+  curiovers(first:5){  // fetches the first 5 curiovers
+   id
+   ver
+   address
+  }
+  
+  uservers(first:5){  // fetches the first 5 uservers
+   id
+   ver
+   address
+  }
+  
+  curiovers(ver:"v1"){  // returns the address of the mentioned version"v1"
+   address
+  }
+  
+  uservers(ver:"v1"){  // returns the address of the mentioned version"v1"
+   address
+  }
+  
+  curiovers(address:"0x123"){  // returns the version of the mentioned  contract address
+   ver
+  }
+  
+  uservers(address:"0x345"){  // returns the version of the mentioned contract address
+   ver
+  }
+  
+  curioSearch(text: "pavan") {
+    id
+  	currentEmbracer
+  	curioid
+  	curioName
+  	category
+  	creatorName
+  	livehash
+  	curioType
+  	status
+  	price
+  	numberOfPassOn
+  	curiHsh {
+  	  id
+	  _3dhash
+	  _2dhash
+	  pichash1
+	  narrationHash
+  	}
+  	upgradedcontractAddress
+  	jrny{
+      id
+	  currentEmbracer
+	  blocknumber
+	  timestamp
+    }
+ }

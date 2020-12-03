@@ -1,0 +1,151 @@
+type Status @entity {
+  id: ID!
+  status: String!
+  description: String!
+}
+
+type Role @entity {
+  id: ID!
+  role: String!
+  description: String!
+}
+
+type Category @entity {
+  id: ID!
+  category: String!
+  description: String!
+}
+
+type Curiotype @entity {
+  id: ID!
+  type: String!
+  description: String!
+}
+
+type Usernametoaddress @entity {
+  id: ID!
+  username: String!
+  add: Bytes!
+}
+
+type Addresstousername @entity {
+  id: ID!
+  add: Bytes!
+  usernames: [String!]!
+}
+
+type Account @entity {
+  id: ID!
+  username: String!
+  name: String!
+  pichash: String!
+  descriptioncontacthash: String!
+  role: String!
+  contenthash: String!
+  upgradedcontractAddress: Bytes!
+  addrs: Usernametoaddress!
+}
+
+type Journey @entity{
+  id: ID!
+  currentEmbracer: String!
+  blocknumber: BigInt!
+  timestamp: BigInt!
+}
+
+type CurioHash @entity{
+  id: ID!
+  _3dhash: String!
+  _2dhash: String!
+  pichash1: String!
+  narrationHash: String!
+}
+
+type Curio @entity{
+  id: ID!
+  currentEmbracer: String!
+  curioid: String!
+  curioName: String!
+  category: String!
+  creatorName: String!
+  livehash: String!
+  curioType: String!
+  status: String!
+  price: BigInt!
+  numberOfPassOn: BigInt!
+  curiHsh: CurioHash!
+  upgradedcontractAddress: Bytes!
+  jrny: [Journey!]!
+}
+
+type Userproduct @entity{
+  id: ID!
+  username: String!
+  products: [String!]!
+}
+
+type UsrHash @entity{
+  id: ID!
+  username: String!
+  HashArr: [String!]!
+}
+
+type Hashformat @entity{
+  id: ID!
+  hashcontent: String!
+  username: String!
+  time: BigInt!
+}
+
+
+type LivHash @entity{
+  id: ID!
+  curioid: String!
+  Hash: [Hashformat!]!
+}
+
+type UserVer @entity{
+  id: ID!
+  ver: String!
+  address: Bytes!
+}
+
+type CurioVer @entity{
+  id: ID!
+  ver: String!
+  address: Bytes!
+}
+
+
+type _Schema_
+  @fulltext(
+    name: "curioSearch",
+    language: en
+    algorithm: rank,
+    include: [
+      {
+        entity: "Curio",
+        fields: [
+          { name: "currentEmbracer" },
+          { name: "curioid" },
+          { name: "curioName" },
+        ]
+      }
+    ]
+  )
+
+  @fulltext(
+    name: "accountSearch",
+    language: en
+    algorithm: rank,
+    include: [
+      {
+        entity: "Account",
+        fields: [
+          { name: "username" },
+          { name: "name" },
+          { name: "role" },
+        ]
+      }
+    ]
+  )

@@ -1,0 +1,13 @@
+Local Graph Node Deployment
+---------------------------------------------------------------------------------------------------------
+1. open the ganache and configure the following
+    Go to settings -> server, Hostname should be seleceted as 0.0.0.0 – All interfaces
+
+2. In T1
+  cd graph-node/docker
+  sudo rm -rf ./data/postgres
+  sudo snap start docker
+  sudo snap services
+  sudo ./setup.sh
+  go to the docker.yaml file, and add the displayed ip address in the Etheruem section
+  sudo docker-compose up

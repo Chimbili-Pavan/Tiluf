@@ -1,0 +1,660 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_add",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      }
+    ],
+    "name": "Burn",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_seller",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_buyer",
+        "type": "string"
+      }
+    ],
+    "name": "EmbraceProductEvent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "LetItGoEvent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_owner",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_category",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_picHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_3DHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_2DHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioType",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_narrationHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "_price",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_status",
+        "type": "string"
+      }
+    ],
+    "name": "NewCurio",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_seller",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_buyer",
+        "type": "string"
+      }
+    ],
+    "name": "PassOnCurioEvent",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_owner",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_category",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_picHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "__3DHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "__2DHash",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioType",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_descrip_highlights",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_status",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "UpdateCurio",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "indexed": false,
+        "internalType": "string",
+        "name": "_liveHash",
+        "type": "string"
+      }
+    ],
+    "name": "UpdateLiveHash",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "SysAdmin",
+    "outputs": [
+      {
+        "internalType": "contract SysAdminProxyInterface",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "SysAdminProxyAddress",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      }
+    ],
+    "name": "burn",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_category",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_picHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "__3DHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "__2DHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_narrationHash",
+        "type": "string"
+      },
+      {
+        "internalType": "uint32",
+        "name": "_price",
+        "type": "uint32"
+      },
+      {
+        "internalType": "string",
+        "name": "_status",
+        "type": "string"
+      }
+    ],
+    "name": "createCurio",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ],
+    "name": "curios",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "owner",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "curioName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "creatorName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "liveHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "curioType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "price",
+        "type": "uint256"
+      },
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "_3DHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "_2DHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "picHash",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "narrationHash",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct AssetLogic.CuriosHash",
+        "name": "curiosHash",
+        "type": "tuple"
+      },
+      {
+        "internalType": "uint256",
+        "name": "numberOfPassOn",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "upgradedcontractAddress",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_buyerName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      }
+    ],
+    "name": "embrace",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_status",
+        "type": "string"
+      }
+    ],
+    "name": "letItGo",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_receiver",
+        "type": "string"
+      }
+    ],
+    "name": "passOnCurio",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_category",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_picHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "__3DHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "__2DHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioType",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_narrationHash",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_Status",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateCurio",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_liveHash",
+        "type": "string"
+      }
+    ],
+    "name": "updateLiveHash",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_curioID",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_userName",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_upgradedcontractAddress",
+        "type": "address"
+      }
+    ],
+    "name": "upgrade",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]

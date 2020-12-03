@@ -1,0 +1,109 @@
+specVersion: 0.0.2
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: SysAdmin
+    network: ropsten
+    source:
+      address: "0x1a6a914a757092ef069606c88bf2a2c3786ddc81"
+      abi: Contract
+      startBlock: 9164853
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - AddressUpdation
+        - NewCategory
+        - NewCurioType
+        - NewRole
+        - NewStatus
+        - SetUserVer
+        - SetCurioVer
+        - JoinEvent1
+      abis:
+        - name: Contract
+          file: SysAdmin/abis/Contract.json
+      eventHandlers:
+        - event: AddressUpdation(string[],address,address)
+          handler: handleAddressUpdation
+        - event: NewCategory(string,string)
+          handler: handleNewCategory
+        - event: NewCurioType(string,string)
+          handler: handleNewCurioType
+        - event: NewRole(string,string)
+          handler: handleNewRole
+        - event: NewStatus(string,string)
+          handler: handleNewStatus
+        - event: SetUserVer(string,address)
+          handler: handleSetUserVer
+        - event: SetCurioVer(string,address)
+          handler: handleSetCurioVer
+        - event: JoinEvent1(string,string,string,string,string,string,string,address)
+          handler: handleJoinEvent1
+      file: SysAdmin/SysAdmin.wasm
+  - kind: ethereum/contract
+    name: UserMain
+    network: ropsten
+    source:
+      address: "0x81bbf56ce3bc835ffe91cc511bbd759423deeb44"
+      abi: Contract1
+      startBlock: 9164858
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - JoinEvent
+        - UpdateAccount
+        - UpdateContentHash
+      abis:
+        - name: Contract1
+          file: UserMain/abis/Contract1.json
+      eventHandlers:
+        - event: JoinEvent(string,address,string,string,string,string,string)
+          handler: handleJoinEvent
+        - event: UpdateAccount(string,string,string,string)
+          handler: handleUpdateAccount
+        - event: UpdateContentHash(string,string)
+          handler: handleUpdateContentHash
+      file: SysAdmin/SysAdmin.wasm
+  - kind: ethereum/contract
+    name: Asset
+    network: ropsten
+    source:
+      address: "0x953ecdb89291812679e02e37c6d6837133cbfc8b"
+      abi: Contract2
+      startBlock: 9164865
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.4
+      language: wasm/assemblyscript
+      entities:
+        - EmbraceProductEvent
+        - NewCurio
+        - LetItGoEvent
+        - PassOnCurioEvent
+        - UpdateCurio
+        - Burn
+        - UpdateLiveHash
+      abis:
+        - name: Contract2
+          file: Asset/abis/Contract2.json
+      eventHandlers:
+        - event: EmbraceProductEvent(string,string,string)
+          handler: handlePassOnCurioEvent
+        - event: NewCurio(string,string,string,string,string,string,string,string,string,uint32,string)
+          handler: handleNewCurio
+        - event: LetItGoEvent(string,string,uint256)
+          handler: handleLetItGoEvent
+        - event: PassOnCurioEvent(string,string,string)
+          handler: handlePassOnCurioEvent
+        - event: UpdateCurio(string,string,string,string,string,string,string,string,string,string,uint256)
+          handler: handleUpdateCurio
+        - event: Burn(string,string)
+          handler: handleBurn
+        - event: UpdateLiveHash(string,string,string)
+          handler: handleUpdateLiveHash
+      file: SysAdmin/SysAdmin.wasm
