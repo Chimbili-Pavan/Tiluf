@@ -68,13 +68,41 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
     description
   }
   
-  curiotypes(first: 2){  // to fetch first 2 curiotypes
+  curiotypes(first: 2){  
     id
     type
     description
   }
   
-  curios(first: 5){   // to fetch all the first 5 products
+  curios(first: 5){   
+    id
+  	currentEmbracer
+  	curioid
+  	curioName
+  	category
+  	creatorName
+  	livehash
+  	curioType
+  	status
+  	price
+  	numberOfPassOn
+  	curiHsh {
+  	  id
+	  _3dhash
+	  _2dhash
+	  pichash1
+	  narrationHash
+  	}
+  	upgradedcontractAddress
+  	jrny{
+      id
+	  currentEmbracer
+	  blocknumber
+	  timestamp
+    }
+  }
+  
+  curios(where: {currentEmbracer:"Pavan1"} ){   
     id
   	currentEmbracer
   	curioid
@@ -103,7 +131,7 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
   }
   
   
-  curio(id:"s1"){     // to fetch the product whose id is "s1"
+  curio(id:"s1"){     
     id
   	currentEmbracer
   	curioid
@@ -159,7 +187,7 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
     }
   }
   
-  userproducts(first :5){
+  userproduct(id:"Chimbili"){   // returns all the products previously owned by CHimbili
 	id
 	username
 	products
@@ -177,7 +205,7 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
 	usernames
   }
   
-  livhashes(first:5){  // to fetch first 5 live hashes of different curio's
+  livehashes(first:5){  
 	id
 	curioid
 	Hash {
@@ -188,7 +216,8 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
 	}
   }
   
-   livhash(id:"S1"){  // to fetch live hashes of the curio of id=S1
+  
+  livehash(id:"s1"){   // returns the livehash of the curio s1
 	id
 	curioid
 	Hash {
@@ -199,7 +228,20 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
 	}
   }
   
-  curiovers(first:5){  // fetches the first 5 curiovers
+  
+  userhashes(first:5){
+	id
+    username
+    HashArr
+  }
+  
+  userhash(id:"Chimbili"){
+	id
+    username
+    HashArr
+  }
+  
+  curiovers(first:5){  
    id
    ver
    address
@@ -211,7 +253,7 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
    address
   }
   
-  curiovers(ver:"v1"){  // returns the address of the mentioned version"v1"
+  curiovers(ver:"v1"){  
    address
   }
   
@@ -219,7 +261,7 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
    address
   }
   
-  curiovers(address:"0x123"){  // returns the version of the mentioned  contract address
+  curiovers(address:"0x123"){  
    ver
   }
   
@@ -254,3 +296,10 @@ accounts(where :{username:"Pavan"}){     //  to fetch all the accounts whose use
 	  timestamp
     }
  }
+ 
+ hashformats(first:2){
+  id
+  hashcontent
+  username
+  time
+  }

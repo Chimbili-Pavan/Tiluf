@@ -2,7 +2,7 @@ import { BigInt, Bytes, store, ethereum } from "@graphprotocol/graph-ts"
 import { Contract, AddressUpdation, NewCategory, NewCurioType, NewRole, NewStatus, SetUserVer, SetCurioVer, JoinEvent1 } from "../generated/SysAdmin/Contract"
 import { Contract1, JoinEvent, UpdateAccount, UpdateContentHash } from "../generated/UserMain/Contract1"
 import { Contract2, EmbraceProductEvent, NewCurio, LetItGoEvent, PassOnCurioEvent, UpdateCurio, Burn, UpdateLiveHash } from "../generated/Asset/Contract2"
-import { Status, Role, Category, Curiotype, Usernametoaddress, Addresstousername, Account, Journey, CurioHash, Curio, Userproduct, UsrHash, LivHash, Hashformat, UserVer, CurioVer} from "../generated/schema"
+import { Status, Role, Category, Curiotype, Usernametoaddress, Addresstousername, Account, Journey, Curiohash, Curio, Userproduct, Userhash, Livehash, Hashformat, Userver, Curiover, Hash} from "../generated/schema"
 
 
 
@@ -30,7 +30,7 @@ export function handleNewStatus(event: NewStatus): void {
   sts.save()
 }
 
-export function handleNewCuriotype(event:NewCurioType): void {
+export function handleNewCurioType(event:NewCurioType): void {
   let _id = event.params._type
   let prdtType = new Curiotype(_id)
   prdtType.type = event.params._type
@@ -86,14 +86,14 @@ export function handleAddressUpdation(event:AddressUpdation): void{
 }
 
 export function handleSetUserVer(event: SetUserVer): void {
-  let uservr = new UserVer(event.params._ver)
+  let uservr = new Userver(event.params._ver)
   uservr.ver = event.params._ver
   uservr.address = event.params._add
   uservr.save()
 }
 
 export function handleSetCurioVer(event: SetCurioVer): void {
-  let curiovr = new CurioVer(event.params._ver)
+  let curiovr = new Curiover(event.params._ver)
   curiovr.ver = event.params._ver
   curiovr.address = event.params._add
   curiovr.save()
@@ -174,7 +174,7 @@ export function handleNewCurio(event: NewCurio): void{
   let prdct = new Curio(_id)
 
   //let id_asst = event.params._3DHash
-  let a = new CurioHash(_id)
+  let a = new Curiohash(_id)
   a._3dhash = event.params._3DHash
   a._2dhash = event.params._2DHash
   a.pichash1 = event.params._picHash
@@ -204,6 +204,16 @@ export function handleNewCurio(event: NewCurio): void{
   his.push(h.id)
   prdct.jrny = his
   prdct.save()
+ /*
+  let userprdcts = new Userproduct(event.params._owner)
+  userprdcts.username = event.params._owner
+  userprdcts.products = []
+
+  let p = userprdcts.products
+  p.push(event.params._curioID)
+  userprdcts.products = p
+  userprdcts.save()
+*/
 
 }
 
@@ -216,10 +226,10 @@ export function handleUpdateCurio(event: UpdateCurio):void {
     }
 
     //let id_ = event.params._picHash
-    let a = CurioHash.load(_id)
+    let a = Curiohash.load(_id)
 
     if(a == null){
-      a = new CurioHash(_id)
+      a = new Curiohash(_id)
     }
 
 
@@ -330,16 +340,20 @@ export function handleUpdateLiveHash(event: UpdateLiveHash):void{
   prdct.livehash = event.params._liveHash
   prdct.save()
 
+  let hsh = new Hash(event.params._liveHash)
+  hsh.content = event.params._liveHash
+  hsh.curioid = event.params._curioID
+  hsh.save()
 
-  let userHash = UsrHash.load(event.params._userName)
+  let userHash = Userhash.load(event.params._userName)
   if(userHash == null){
-    userHash = new UsrHash(event.params._userName)
+    userHash = new Userhash(event.params._userName)
     userHash.username = event.params._userName
     userHash.HashArr = []
   }
 
   let ar = userHash.HashArr
-  ar.push(event.params._liveHash)
+  ar.push(hsh.id)
   let arlen = i32(ar.length)
   userHash.HashArr = ar
   userHash.save()
@@ -350,9 +364,9 @@ export function handleUpdateLiveHash(event: UpdateLiveHash):void{
   hashfrmt.time = event.block.timestamp  // go with timestamp
   hashfrmt.save()
 
-  let lhash = LivHash.load(event.params._curioID)
+  let lhash = Livehash.load(event.params._curioID)
   if(lhash == null){
-    lhash = new LivHash(event.params._curioID)
+    lhash = new Livehash(event.params._curioID)
     lhash.curioid = event.params._curioID
     lhash.Hash = []
   }
@@ -361,8 +375,11 @@ export function handleUpdateLiveHash(event: UpdateLiveHash):void{
      a.push(hashfrmt.id)
   }
   else{
-    let  h = Hashformat.load(ar[ar.length-1])
+    /*
+    let  h = Hashformat.load(ar[ar.length-2])
     a.splice(a.indexOf(h.id),1)
+    a.push(hashfrmt.id)
+    */
     a.push(hashfrmt.id)
   }
 

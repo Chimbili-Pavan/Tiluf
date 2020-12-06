@@ -467,7 +467,7 @@ export class Journey extends Entity {
   }
 }
 
-export class CurioHash extends Entity {
+export class Curiohash extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -475,17 +475,17 @@ export class CurioHash extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save CurioHash entity without an ID");
+    assert(id !== null, "Cannot save Curiohash entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save CurioHash entity with non-string ID. " +
+      "Cannot save Curiohash entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("CurioHash", id.toString(), this);
+    store.set("Curiohash", id.toString(), this);
   }
 
-  static load(id: string): CurioHash | null {
-    return store.get("CurioHash", id) as CurioHash | null;
+  static load(id: string): Curiohash | null {
+    return store.get("Curiohash", id) as Curiohash | null;
   }
 
   get id(): string {
@@ -731,7 +731,7 @@ export class Userproduct extends Entity {
   }
 }
 
-export class UsrHash extends Entity {
+export class Hash extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -739,17 +739,66 @@ export class UsrHash extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save UsrHash entity without an ID");
+    assert(id !== null, "Cannot save Hash entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save UsrHash entity with non-string ID. " +
+      "Cannot save Hash entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("UsrHash", id.toString(), this);
+    store.set("Hash", id.toString(), this);
   }
 
-  static load(id: string): UsrHash | null {
-    return store.get("UsrHash", id) as UsrHash | null;
+  static load(id: string): Hash | null {
+    return store.get("Hash", id) as Hash | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get content(): string {
+    let value = this.get("content");
+    return value.toString();
+  }
+
+  set content(value: string) {
+    this.set("content", Value.fromString(value));
+  }
+
+  get curioid(): string {
+    let value = this.get("curioid");
+    return value.toString();
+  }
+
+  set curioid(value: string) {
+    this.set("curioid", Value.fromString(value));
+  }
+}
+
+export class Userhash extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save Userhash entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save Userhash entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("Userhash", id.toString(), this);
+  }
+
+  static load(id: string): Userhash | null {
+    return store.get("Userhash", id) as Userhash | null;
   }
 
   get id(): string {
@@ -838,7 +887,7 @@ export class Hashformat extends Entity {
   }
 }
 
-export class LivHash extends Entity {
+export class Livehash extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -846,17 +895,17 @@ export class LivHash extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save LivHash entity without an ID");
+    assert(id !== null, "Cannot save Livehash entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save LivHash entity with non-string ID. " +
+      "Cannot save Livehash entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("LivHash", id.toString(), this);
+    store.set("Livehash", id.toString(), this);
   }
 
-  static load(id: string): LivHash | null {
-    return store.get("LivHash", id) as LivHash | null;
+  static load(id: string): Livehash | null {
+    return store.get("Livehash", id) as Livehash | null;
   }
 
   get id(): string {
@@ -887,7 +936,7 @@ export class LivHash extends Entity {
   }
 }
 
-export class UserVer extends Entity {
+export class Userver extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -895,17 +944,17 @@ export class UserVer extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save UserVer entity without an ID");
+    assert(id !== null, "Cannot save Userver entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save UserVer entity with non-string ID. " +
+      "Cannot save Userver entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("UserVer", id.toString(), this);
+    store.set("Userver", id.toString(), this);
   }
 
-  static load(id: string): UserVer | null {
-    return store.get("UserVer", id) as UserVer | null;
+  static load(id: string): Userver | null {
+    return store.get("Userver", id) as Userver | null;
   }
 
   get id(): string {
@@ -936,7 +985,7 @@ export class UserVer extends Entity {
   }
 }
 
-export class CurioVer extends Entity {
+export class Curiover extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
@@ -944,17 +993,17 @@ export class CurioVer extends Entity {
 
   save(): void {
     let id = this.get("id");
-    assert(id !== null, "Cannot save CurioVer entity without an ID");
+    assert(id !== null, "Cannot save Curiover entity without an ID");
     assert(
       id.kind == ValueKind.STRING,
-      "Cannot save CurioVer entity with non-string ID. " +
+      "Cannot save Curiover entity with non-string ID. " +
         'Considering using .toHex() to convert the "id" to a string.'
     );
-    store.set("CurioVer", id.toString(), this);
+    store.set("Curiover", id.toString(), this);
   }
 
-  static load(id: string): CurioVer | null {
-    return store.get("CurioVer", id) as CurioVer | null;
+  static load(id: string): Curiover | null {
+    return store.get("Curiover", id) as Curiover | null;
   }
 
   get id(): string {

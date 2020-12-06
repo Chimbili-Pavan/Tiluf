@@ -65,7 +65,7 @@ export class JoinEvent1__Params {
     return this._event.parameters[3].value.toString();
   }
 
-  get _descriptionContactHash(): string {
+  get _narrationHash(): string {
     return this._event.parameters[4].value.toString();
   }
 

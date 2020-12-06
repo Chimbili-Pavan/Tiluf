@@ -59,7 +59,7 @@
 			{
 				"indexed": false,
 				"internalType": "string",
-				"name": "_descriptionContactHash",
+				"name": "_narrationHash",
 				"type": "string"
 			},
 			{

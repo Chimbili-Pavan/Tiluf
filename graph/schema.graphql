@@ -53,7 +53,7 @@ type Journey @entity{
   timestamp: BigInt!
 }
 
-type CurioHash @entity{
+type Curiohash @entity{
   id: ID!
   _3dhash: String!
   _2dhash: String!
@@ -73,7 +73,7 @@ type Curio @entity{
   status: String!
   price: BigInt!
   numberOfPassOn: BigInt!
-  curiHsh: CurioHash!
+  curiHsh: Curiohash!
   upgradedcontractAddress: Bytes!
   jrny: [Journey!]!
 }
@@ -84,10 +84,16 @@ type Userproduct @entity{
   products: [String!]!
 }
 
-type UsrHash @entity{
+type Hash @entity{
+  id: ID!
+  content: String!
+  curioid: String!
+}
+
+type Userhash @entity{
   id: ID!
   username: String!
-  HashArr: [String!]!
+  HashArr: [Hash!]!
 }
 
 type Hashformat @entity{
@@ -98,19 +104,19 @@ type Hashformat @entity{
 }
 
 
-type LivHash @entity{
+type Livehash @entity{
   id: ID!
   curioid: String!
   Hash: [Hashformat!]!
 }
 
-type UserVer @entity{
+type Userver @entity{
   id: ID!
   ver: String!
   address: Bytes!
 }
 
-type CurioVer @entity{
+type Curiover @entity{
   id: ID!
   ver: String!
   address: Bytes!
