@@ -72,15 +72,15 @@ contract AssetLogic{
         
         require(SysAdmin.getUserNameAddr(_userName) == msg.sender, " Asset_CreateCurio: The caller doesnot holds the username ");
         
-        require(keccak256(bytes(SysAdmin.getUserRole(_userName))) == keccak256(bytes("designer")), " Asset_CreateCurio: Only designers are allowed to create the asset ");
+        require(keccak256(bytes(SysAdmin.getUserRole(_userName))) == keccak256(bytes("Creator")), " Asset_CreateCurio: Only designers are allowed to create the asset ");
         
         require(bytes(curios[_curioID].curioID).length == 0, " Asset_CreateCurio: The product ID already exists ");
         
-        require(SysAdmin.isCategoryExists(_category) == false, " Asset_CreateCurio: Category does not exist ");
+        require(SysAdmin.isCategoryExists(_category) == true, " Asset_CreateCurio: Category does not exist ");
         
-        require(SysAdmin.isStatusExists(_status) == false, " Asset_CreateCurio: Status does not exist ");
+        require(SysAdmin.isStatusExists(_status) == true, " Asset_CreateCurio: Status does not exist ");
         
-        if (keccak256(bytes(_status)) == keccak256(bytes("forSale")) )
+        if (keccak256(bytes(_status)) == keccak256(bytes("letItGo")) )
         {
             require ( _price > 0, " Asset_CreateCurio: Open for sale but price not mentioned");
         }
@@ -274,7 +274,7 @@ contract AssetLogic{
         curios[_curioID].journey[curios[_curioID].numberOfPassOn] = _journey;
         
         // make the product as not for sale
-        curios[_curioID].status = "keep";
+        curios[_curioID].status = "keepIt";
         
         // emit the event when asset is bought by sender
         emit EmbraceProductEvent(sellerUsername,_curioID, _buyerName);

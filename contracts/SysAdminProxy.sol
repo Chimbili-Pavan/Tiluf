@@ -61,7 +61,7 @@ contract SysAdminProxy {
    
    event AddressUpdation(string[] _userNames,address oldAddress, address newAddress);
    
-   event JoinEvent1(string _userName, string _role, string _name, string _picHash, string _descriptionContactHash, string _contentHash, string  _verName, address _descryptionContractAddress);
+   event JoinEvent1(string _userName, string _role, string _name, string _picHash, string _narrationHash, string _contentHash, string  _verName, address _descryptionContractAddress);
   
    event SetUserVer(string  _ver,address _add);
    
@@ -183,6 +183,7 @@ contract SysAdminProxy {
        require(curioVerAdd[_ver] == address(0x0), " SysAdmin_SetCurioVersionAddress: The version is already available ");
        curioVerAdd[_ver] = _add;
        curioVer[_add] = _ver;
+       emit SetCurioVer(_ver,_add);
        return true;
    }
    
@@ -192,6 +193,7 @@ contract SysAdminProxy {
        require(userVerAdd[_ver] == address(0x0), " SysAdmin_SetUserVersionAddress: The version is already available  ");
        userVerAdd[_ver] = _add;
        userVer[_add] = _ver;
+       emit SetUserVer(_ver,_add);
        return true;
    }
    
